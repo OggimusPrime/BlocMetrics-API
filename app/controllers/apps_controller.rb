@@ -12,7 +12,19 @@ class AppsController < ApplicationController
     app = App.find(params[:id])
     authorize app
 
-    render json: app.events
+    # modified the return value of show action to return array of arrays.
+    # given more time the show action would return JSON and the dashboard
+    # would handle all the sorting and grouping
+    sorted = app.events.group(:event).count
+    events_count = []
+
+    sorted.each do |key, value|
+      events_count.push([key, value])
+    end
+
+    events_count.push(app.domain)
+
+    render json: { data: events_count }
   end
 
   def create
