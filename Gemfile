@@ -18,6 +18,10 @@ gem 'pundit'
 
 gem 'rack-cors', require: 'rack/cors'
 
+gem 'puma'
+
+gem 'newrelic_rpm'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.0'
