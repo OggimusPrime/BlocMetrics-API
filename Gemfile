@@ -1,25 +1,15 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
-
 gem 'rails-api'
-
-gem 'spring', group: :development
-
-gem 'sqlite3'
-
 gem 'faker'
-
 gem 'active_model_serializers',
     github: 'rails-api/active_model_serializers',
     branch: 'master'
 
 gem 'pundit'
-
 gem 'rack-cors', require: 'rack/cors'
-
 gem 'puma'
-
 gem 'newrelic_rpm'
 
 group :development, :test do
@@ -27,6 +17,16 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails', '~> 4.0'
 end
+
+group :development do
+  gem 'spring'
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
